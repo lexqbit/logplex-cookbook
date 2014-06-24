@@ -1,0 +1,23 @@
+{
+  "id": "users",
+  "users": [
+    {
+      "user": "testuser",
+      "password": "testuser",
+      "api": "full_api",
+      "channel": "any_channel",
+      "action": "create"
+    },
+    {
+      "user": "testuser2",
+      "password": "testuser",
+      "api": "full_api",
+      "channel": "any_channel",
+      "action": "create"
+    },
+    {
+      "user": "testuser2",
+      "action": "delete"
+    }
+  ]
+}

@@ -62,3 +62,13 @@ supervisor_service 'logplex-service' do
           '-config sys'
   action :enable
 end
+
+# create/delete logplex users
+data_bag_item("logplex", "users")['users'].each do |user|
+  logplex_user user['user'] do
+    password user['password']
+    api user['api'] if user['api']
+    channel user['channel'] if user['channel']
+    action user['action'].to_sym if user['action']
+  end
+end

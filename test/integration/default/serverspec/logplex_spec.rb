@@ -37,3 +37,15 @@ describe 'logplex running' do
   end
 
 end
+
+describe 'logplex users' do
+  
+  it 'testuser exists' do
+    expect(command('echo "logplex_cred:lookup(<<\"testuser\">>)." | erl_call -c 123 -e -name logplex@`hostname`')).to_not return_stdout '{ok, no_such_cred}'
+  end
+
+  it 'testuser2 NOT exists' do
+    expect(command('echo "logplex_cred:lookup(<<\"testuser2\">>)." | erl_call -c 123 -e -name logplex@`hostname`')).to return_stdout '{ok, no_such_cred}'
+  end
+
+end
