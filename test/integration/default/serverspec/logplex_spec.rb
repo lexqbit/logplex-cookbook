@@ -19,6 +19,18 @@ describe 'logplex installation' do
     expect(file('/etc/supervisor.d/logplex-service.conf')).to be_file
   end
 
+  it 'should have logplex user' do
+    expect(user('logplex')).to exist
+  end
+
+  it 'should have logplex group' do
+    expect(group('logplex')).to exist
+  end
+
+  it 'logplex user should belong to logplex group' do
+    expect(user('logplex')).to belong_to_group 'logplex'
+  end
+
 end
 
 describe 'logplex running' do
