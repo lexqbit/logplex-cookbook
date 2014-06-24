@@ -1,14 +1,3 @@
-require 'serverspec'
-
-include Serverspec::Helper::Exec
-include Serverspec::Helper::DetectOS
-
-RSpec.configure do |c|
-  c.before :all do
-    c.path = '/sbin:/usr/sbin'
-  end
-end
-
 describe 'logplex installation' do
 
   it 'should have logplex files' do
@@ -39,7 +28,12 @@ describe 'logplex running' do
     expect(service('logplex-service:logplex-service-8001')).to be_running.under('supervisor')
   end
 
-  it 'should have port 8001 listening' do
+  it 'should have port 8001 listening (API)' do
     expect(port(8001)).to be_listening
   end
+
+  it 'should have port 8601 listening (receive logs)' do
+    expect(port(8601)).to be_listening
+  end
+
 end
