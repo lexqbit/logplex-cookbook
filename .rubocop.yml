@@ -1,0 +1,6 @@
+CyclomaticComplexity:
+  Max: 10
+Encoding:
+  Enabled: false
+LineLength:
+  Enabled: false
