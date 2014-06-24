@@ -62,7 +62,3 @@ supervisor_service 'logplex-service' do
           '-config sys'
   action :enable
 end
-
-logplex_call "add_user" do
-  code %q(logplex_cred:store(logplex_cred:grant('full_api', logplex_cred:grant('any_channel', logplex_cred:rename(<<"Local-Test">>, logplex_cred:new(<<"local">>, <<"password">>))))).)
-end
