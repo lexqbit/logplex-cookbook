@@ -4,3 +4,7 @@ Encoding:
   Enabled: false
 LineLength:
   Enabled: false
+LiteralInCondition:
+  Enabled: false
+MethodLength:
+  Max: 20

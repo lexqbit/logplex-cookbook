@@ -58,7 +58,7 @@ supervisor_service 'logplex-service' do
           '-env ERL_LIBS ' \
           'deps ' \
           '-s logplex_app ' \
-          '-setcookie ${LOGPLEX_COOKIE} ' \
+          "-setcookie #{node['logplex']['cookie']} " \
           '-config sys'
   action :enable
 end

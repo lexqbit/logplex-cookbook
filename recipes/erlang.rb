@@ -10,6 +10,7 @@
 include_recipe 'erlang'
 
 # fix erl_call symlink
-link node['erlang']['erl_call']['install_path'] do
-  to Dir.glob('/usr/lib/erlang/lib/**/erl_call').first
+# for some reason the erlang cookbook create symlinks with wildcards (`*`) in the link. odd.
+link node['erlang']['erl_call']['sym_path'] do
+  to node['erlang']['erl_call']['install_path']
 end
