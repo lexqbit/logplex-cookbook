@@ -121,10 +121,31 @@ Just include `logplex` in your node's `run_list`:
 }
 ```
 
+#### logplex\_call
+Make an erlang call to logplex
+
+```ruby
+logplex_call "lookup_user" do
+  code %q(logplex_cred:lookup(<<"myuser">>))
+end
+```
+
+#### logplex\_user
+Manage logplex users. You can also manage logplex users via the data bag ('logplex', 'users')
+
+```ruby
+logplex_user "myuser" do
+  password  "mypasswd"
+  api       "full_api"
+  channel   "any_channel"
+  action    :create
+end
+```
+
 Contributing
 ------------
 1. Fork the repository on Github
-2. Create a named feature branch (like `add_component_x`)
+2. Create a named feature branch (like `add\_component\_x`)
 3. Write you change
 4. Write tests for your change (if applicable)
 5. Run the tests, ensuring they all pass
