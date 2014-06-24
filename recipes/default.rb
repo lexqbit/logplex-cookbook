@@ -7,7 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 
-include_recipe 'erlang'
+include_recipe 'logplex::erlang'
 include_recipe 'git'
 include_recipe 'supervisor'
 
@@ -53,7 +53,7 @@ supervisor_service 'logplex-service' do
   user node['logplex']['user']
   numprocs node['logplex']['processes']
   numprocs_start node['logplex']['proc_start']
-  command 'erl -name logplex@`hostname` ' \
+  command "erl -name logplex@#{node['logplex']['instance_name']} " \
           '-pa ebin ' \
           '-env ERL_LIBS ' \
           'deps ' \
@@ -61,4 +61,8 @@ supervisor_service 'logplex-service' do
           '-setcookie ${LOGPLEX_COOKIE} ' \
           '-config sys'
   action :enable
+end
+
+logplex_call "add_user" do
+  code %q(logplex_cred:store(logplex_cred:grant('full_api', logplex_cred:grant('any_channel', logplex_cred:rename(<<"Local-Test">>, logplex_cred:new(<<"local">>, <<"password">>))))).)
 end
