@@ -64,7 +64,7 @@ supervisor_service 'logplex-service' do
 end
 
 # create/delete logplex users
-data_bag_item("logplex", "users")['users'].each do |user|
+data_bag_item('logplex', 'users')['users'].each do |user|
   logplex_user user['user'] do
     password user['password']
     api user['api'] if user['api']
