@@ -12,12 +12,15 @@ end
 def wait_for_erl
   # block until erl vm is up
   t = node['erlang']['erl_call']['timeout'] || 60
+  waited_at_least_once = false
   Timeout.timeout(t) do
     while true
       if erl_ready?
+        sleep 5 if waited_at_least_once
         break
       else
         Chef::Log.info('Waiting for erl vm to become available...')
+        waited_at_least_once = true
         sleep 5
       end
     end
