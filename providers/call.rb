@@ -16,7 +16,11 @@ def wait_for_erl
   Timeout.timeout(t) do
     while true
       if erl_ready?
-        sleep 5 if waited_at_least_once
+        Chef::Log.debug('Erlang VM available...')
+        if waited_at_least_once == true
+          Chef::Log.debug('pausing for another 10 seconds...')
+          sleep 10
+        end
         break
       else
         Chef::Log.info('Waiting for erl vm to become available...')
