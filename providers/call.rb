@@ -34,7 +34,7 @@ rescue Timeout::Error
 end
 
 def erl_ready?
-  cmd = Mixlib::ShellOut.new("echo 'logplex_app:config().' | erl_call -c #{node['logplex']['cookie']} -e -name logplex@#{node['logplex']['instance_name']}")
+  cmd = Mixlib::ShellOut.new("echo 'logplex_app:config().' | erl_call -c #{node['logplex']['cookie']} -e -name logplex@localhost")
   cmd.run_command
   cmd.error? ? false : true
 end
@@ -43,7 +43,7 @@ def do_erl_call
   wait_for_erl
   erl_call new_resource.name do
     code new_resource.code
-    node_name "logplex@#{node['logplex']['instance_name']}"
+    node_name "logplex@localhost"
     cookie node['logplex']['cookie']
   end
 end
