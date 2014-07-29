@@ -8,7 +8,7 @@ default['logplex']['instance_name'] = node.name
 default['logplex']['config_redis_url'] = 'redis://localhost:6379'
 default['logplex']['redgrid_redis_url'] = 'redis://localhost:6379'
 default['logplex']['stats_redis_url'] = 'redis://localhost:6379'
-default['logplex']['local_ip'] = '127.0.0.1'
+default['logplex']['local_ip'] = node.ipaddress
 default['logplex']['cookie'] = '123'
 default['logplex']['auth_key'] = '123'
 
