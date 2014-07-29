@@ -19,7 +19,8 @@ default['logplex']['env'] = {
   'LOGPLEX_STATS_REDIS_URL' => node['logplex']['stats_redis_url'].strip,
   'LOCAL_IP' => node['logplex']['local_ip'].strip,
   'LOGPLEX_COOKIE' => node['logplex']['cookie'].strip,
-  'LOGPLEX_AUTH_KEY' => node['logplex']['auth_key'].strip
+  'LOGPLEX_AUTH_KEY' => node['logplex']['auth_key'].strip,
+  'HOME' => "/home/#{node['logplex']['user']}/"
 }
 
 default['logplex']['processes'] = 1
