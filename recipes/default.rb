@@ -45,7 +45,6 @@ bash 'setup-logplex' do
   EOF
 end
 
-# configure lucid-server service
 supervisor_service 'logplex-service' do
   process_name 'logplex-service-%(process_num)s'
   directory node['logplex']['dir']
