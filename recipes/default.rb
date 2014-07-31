@@ -59,7 +59,7 @@ supervisor_service 'logplex-service' do
           '-s logplex_app ' \
           "-setcookie #{node['logplex']['cookie']} " \
           '-config sys'
-  action :enable
+  action [:start, :enable]
 end
 
 # create/delete logplex users
