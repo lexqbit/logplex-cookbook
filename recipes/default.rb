@@ -40,7 +40,7 @@ end
 
 bash 'setup-logplex' do
   cwd node['logplex']['dir']
-  environment {HOME: "/root"}
+  environment "HOME" => "#{ENV['HOME']}"
   code <<-EOF
     ./rebar --config public.rebar.config get-deps compile
   EOF
